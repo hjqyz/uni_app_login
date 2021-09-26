@@ -10,7 +10,7 @@
 					帐 号
 				</view>
 
-				<u-input :focus="un" v-model="userLoginInfo.userName" type="text" :height="100" placeholder="" :custom-style="customStyle"
+				<u-input :focus="un" v-model="userLoginInfo.userName" type="text" :height="100" placeholder="请输入账号" :custom-style="customStyle"
 				 :clearable="false" @focus="userFocus" @blur="userBlur" />
 
 				<view class="clear" @click="clearInput('userName')" v-show="userLoginInfo.userName!=='' && isuserFocus">
@@ -24,7 +24,7 @@
 				</view>
 
 				<u-input :focus="pd" v-model="userLoginInfo.password" type="password" :password-icon="false" :height="100"
-				 placeholder="" :maxlength="pdMaxLength" :custom-style="customStyle" :clearable="false" @focus="pdFocus" @blur="pdBlur" />
+				 placeholder="请输入密码" :maxlength="pdMaxLength" :custom-style="customStyle" :clearable="false" @focus="pdFocus" @blur="pdBlur" />
 
 				<view class="clear" @click="clearInput('password')" v-show="userLoginInfo.password!=='' && ispdFocus">
 					<image :src="clearImg" class="img"></image>
@@ -34,12 +34,12 @@
 			<!-- 登录按钮 -->
 			<view class="btn">
 				<u-button size="default" :loading="isLogining" :ripple="true" :custom-style="isDisabledBtn?login_btn_style.disabled:login_btn_style.able"
-				 :disabled="isDisabledBtn" @click="login">{{isLogining?'':'登 录'}}</u-button>
+				 :disabled="isDisabledBtn" @tap="login">{{isLogining?'':'登 录'}}</u-button>
 			</view>
 
 			<u-toast ref="uToast"></u-toast>
 		</view>
-		<view class="copy-right">CopyRight 2020.09.20 FZYK</view>
+		<view class="copy-right">CopyRight 2021</view>
 	</view>
 </template>
 
@@ -183,7 +183,12 @@
 					this.$refs.uToast.show({
 						title: '登录成功',
 						type: 'success'
-					})
+					});
+					console.log(123)
+					uni.navigateTo({
+						url:"/pages/Layout/index"
+					}
+					)
 				},2000)
 			}
 		},

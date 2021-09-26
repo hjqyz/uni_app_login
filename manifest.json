@@ -1,4 +1,17 @@
 {
+	"h5" : {
+	        "devServer" : {
+	            "port" : 80,
+	            "disableHostCheck" : true,
+	            "proxy" : {
+	                "/img" : {
+	                    "target" : "https://acg.yanwz.cn/api.php",
+	                    "changeOrigin" : true,
+	                    "secure" : false
+	                }
+	            }
+	        }
+	    },
   "name" : "uni_app_login",
   "appid" : "__UNI__D0E45FF",
   "description": "",
